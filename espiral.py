@@ -5,7 +5,7 @@ class Espiral:
         # Inicializar Pygame
         pygame.init()
         # Establecer el tamaño de la ventana
-        self.tamaño_ventana = (500, 500)
+        self.tamaño_ventana = (1000, 1000)
         #Booleano para saber si el juego esta en ejecuccion:
         self.running = True
         # Crear la ventana
@@ -21,7 +21,7 @@ class Espiral:
         except:
             print("Error: solo acepta tupla con este formato rgb: (255, 255, 255")
         # Tamaño de bloque ancho-alto de la cuadricula 5x5:
-        self.tamaño_bloque = self.tamaño_ventana[0]/5
+        self.tamaño_bloque = self.tamaño_ventana[0]/10
 
 
     def Bucle_Juego(self):
@@ -69,19 +69,20 @@ class Espiral:
         la_direccion = 0 #Empezamos con direccion derecha
         iterador_pasos = 0 #Esto es un simple iterador para saber en que paso esta y tiene que tiene como maximo
         # => Cantidad de pasos
-        #Primer punto central:
-        text_surface = self.fuente.render(str(self.numero_imprimir), True, (255, 255, 255))
-        self.pantalla.blit(text_surface, pos_actual)
-        pygame.display.flip()
+
         #Añadimos 1 al numero a imprimir en pantalla:
         self.numero_imprimir = self.numero_imprimir + 1
-        for i in range(8):
+        for i in range(16):
                 if cantidad_pasos == 1:
                     for p in range(2):
                         Direccion(pos_actual, la_direccion)
-                        text_surface = self.fuente.render(str(self.numero_imprimir), True, (255, 255, 255))
-                        self.pantalla.blit(text_surface, pos_actual)
-                        pygame.display.flip()
+
+                        # Si el numero es primo imprimimos en pantalla:
+                        if self.Es_Primo(self.numero_imprimir) == True:
+
+                            text_surface = self.fuente.render(str(self.numero_imprimir), True, (255, 255, 255))
+                            self.pantalla.blit(text_surface, pos_actual)
+                            pygame.display.flip()
                     
                         #Cambiamos de direccion:
                         la_direccion = la_direccion+1
@@ -94,10 +95,13 @@ class Espiral:
                     for pasos in range(cantidad_pasos):
                         print("Paso:  " + str(pasos))
                         Direccion(pos_actual, la_direccion)
-                        text_surface = self.fuente.render(str(self.numero_imprimir), True, (255, 255, 255))
-                        self.pantalla.blit(text_surface, pos_actual)
+                        # Si el numero es primo imprimimos en pantalla:
+                        if self.Es_Primo(self.numero_imprimir) == True:
+
+                            text_surface = self.fuente.render(str(self.numero_imprimir), True, (255, 255, 255))
+                            self.pantalla.blit(text_surface, pos_actual)
+                            pygame.display.flip()
                         self.numero_imprimir = self.numero_imprimir + 1
-                        pygame.display.flip()
                 
                     iterador_pasos = iterador_pasos + 1
                     #Camabiamos de direccion:
@@ -112,7 +116,15 @@ class Espiral:
                         la_direccion = 0
 
                 
+    def Es_Primo(self, numero):
+        if numero < 2:
+            return False
 
+        for i in range(2, numero):
+            if (numero%i == 0):
+                return False
+
+        return True
 
 
 
