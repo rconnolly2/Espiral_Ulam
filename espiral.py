@@ -21,7 +21,7 @@ class Espiral:
         except:
             print("Error: solo acepta tupla con este formato rgb: (255, 255, 255")
         # Tamaño de bloque ancho-alto de la cuadricula 5x5:
-        self.tamaño_bloque = self.tamaño_ventana[0]/10
+        self.tamaño_bloque = self.tamaño_ventana[0]/20
         #Color triangulos => numeros pares y impar
         self.color_pares = (227, 90, 120)
         self.color_impar = (120, 227, 90)
@@ -71,7 +71,7 @@ class Espiral:
         pygame.draw.rect(self.pantalla, self.color_impar, (pos_actual[0], pos_actual[1], self.tamaño_bloque, self.tamaño_bloque))
         #Añadimos 1 al numero a imprimir en pantalla:
         self.numero_imprimir = self.numero_imprimir + 1
-        for i in range(16):
+        for i in range(32):
                 if cantidad_pasos == 1:
                     for p in range(2): 
                         Direccion(pos_actual, la_direccion) #Cambia de direccion
@@ -94,7 +94,6 @@ class Espiral:
                 else:
 
                     for pasos in range(cantidad_pasos):
-                        print("Paso:  " + str(pasos))
                         Direccion(pos_actual, la_direccion)
                         # Si el numero es primo imprimimos en pantalla:
                         if self.Es_Primo(self.numero_imprimir) == True:
@@ -108,7 +107,7 @@ class Espiral:
                         self.numero_imprimir = self.numero_imprimir + 1
                 
                     iterador_pasos = iterador_pasos + 1
-                    #Camabiamos de direccion:
+                    #Cambiamos de direccion:
                     la_direccion = la_direccion+1
                     #Cuando cantidad de pasos sea = 2
                     #añadimos un paso mas y reiniciamos el iterador
