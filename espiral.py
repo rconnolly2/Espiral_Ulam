@@ -1,7 +1,7 @@
 import pygame
 
 class Espiral:
-    def __init__(self, texto_ventana: str, color_fondo: tuple):
+    def __init__(self, texto_ventana: str, color_fondo: tuple, tiempo_paso: int):
         # Inicializar Pygame
         pygame.init()
         # Establecer el tamaño de la ventana
@@ -15,6 +15,8 @@ class Espiral:
         #Fuente y tamaño que vamos a utilizar:
         self.fuente = pygame.font.Font(None, 15)
         self.numero_imprimir = 1
+        #Tiempo en segundos por cada cuadro que se dibuja:
+        self.tiempo_paso = int(1000*tiempo_paso) #Multiplico 1000* por tiempo de paso por ej: 0.5 seg => 500ms
         # Cambiar color fondo aceptanndo solo una tupla RGB ej: (255, 255, 255)
         try:
             self.pantalla.fill(color_fondo)
@@ -80,10 +82,14 @@ class Espiral:
                         if self.Es_Primo(self.numero_imprimir) == True:
 
                             #Dibujamos un triangulo con el primer punto x, y por defecto, luego + ancho del bloque, y por ultimo x, y por defecto menos y que añadimos tamaño del bloque:
+                            pygame.time.delay(self.tiempo_paso)
                             pygame.draw.polygon(self.pantalla, self.color_pares, [pos_actual, (pos_actual[0]+self.tamaño_bloque, pos_actual[1]), (pos_actual[0], pos_actual[1]+self.tamaño_bloque)])
+                            pygame.display.flip() # Actualizamos pantalla
                         else:
                             # No es par
+                            pygame.time.delay(self.tiempo_paso)
                             pygame.draw.rect(self.pantalla, self.color_impar, (pos_actual[0], pos_actual[1], self.tamaño_bloque, self.tamaño_bloque))
+                            pygame.display.flip() # Actualizamos pantalla
                     
                         #Cambiamos de direccion:
                         la_direccion = la_direccion+1
@@ -99,10 +105,14 @@ class Espiral:
                         if self.Es_Primo(self.numero_imprimir) == True:
 
                             #Dibujamos un triangulo con el primer punto x, y por defecto, luego + ancho del bloque, y por ultimo x, y por defecto menos y que añadimos tamaño del bloque:
+                            pygame.time.delay(self.tiempo_paso)
                             pygame.draw.polygon(self.pantalla, self.color_pares, [pos_actual, (pos_actual[0]+self.tamaño_bloque, pos_actual[1]), (pos_actual[0], pos_actual[1]+self.tamaño_bloque)])
+                            pygame.display.flip() # Actualizamos pantalla
                         else:
                             # No es par
+                            pygame.time.delay(self.tiempo_paso)
                             pygame.draw.rect(self.pantalla, self.color_impar, (pos_actual[0], pos_actual[1], self.tamaño_bloque, self.tamaño_bloque))
+                            pygame.display.flip() # Actualizamos pantalla
 
                         self.numero_imprimir = self.numero_imprimir + 1
                 
@@ -117,8 +127,6 @@ class Espiral:
 
                     if la_direccion == 4: # Si la direccion es 4 que no existe reseteamos a derecha => 0
                         la_direccion = 0
-
-        pygame.display.flip() # Actualizamos pantalla
 
                 
     def Es_Primo(self, numero):
@@ -135,6 +143,6 @@ class Espiral:
 
 
 
-juego = Espiral("Espiral Ulam", (177, 242, 240))
+juego = Espiral("Espiral Ulam", (177, 242, 240), 0.1)
 juego.Crear_Espiral()
 juego.Bucle_Juego()
