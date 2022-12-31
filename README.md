@@ -2,7 +2,7 @@
 # Espiral de Ulam
 
 
-Este código se trata de una espiral de Ulam, una espiral de Ulam es una forma de colocar números enteros consecutivos en dirección de espiral, en la espiral se suele marcar los números primos para crear un patrón de líneas diagonales.
+Este código se trata de una espiral de Ulam, una espiral de Ulam es una forma de colocar números enteros consecutivos en dirección de espiral, en la espiral se suele marcar los números primos para crear un patrón de líneas diagonales
 [Espiral de Ulam](https://es.wikipedia.org/wiki/Espiral_de_Ulam). Yo he representado los números pares con un triángulo rectángulo y los impares con cuadrados.
 
 
