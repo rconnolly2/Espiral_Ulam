@@ -9,7 +9,7 @@ Este código se trata de una espiral de Ulam, una espiral de Ulam es una forma d
 
 ## Espiral de ulam
 
-![GIF de la espiral](https://i.ibb.co/qghCZBM/espiral.gif)
+![GIF de la espiral](https://github.com/rconnolly2/Espiral_Ulam/blob/master/espiral.gif?raw=true)
 
 
 ## 💻Requisitos
