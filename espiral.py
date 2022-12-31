@@ -20,7 +20,7 @@ class Espiral:
             self.pantalla.fill(color_fondo)
         except:
             print("Error: solo acepta tupla con este formato rgb: (255, 255, 255")
-        # Tamaño de bloque ancho-alto de la cuadricula 5x5:
+        # Tamaño de bloque ancho-alto de la cuadricula 20x20:
         self.tamaño_bloque = self.tamaño_ventana[0]/20
         #Color triangulos => numeros pares y impar
         self.color_pares = (227, 90, 120)
